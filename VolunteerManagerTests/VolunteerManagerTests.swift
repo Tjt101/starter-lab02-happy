@@ -25,7 +25,7 @@ class VolunteerManagerTests: XCTestCase {
         var manager = VolunteerManager()
         manager.volunteer("Uy", for: -5)
         // Successfully adding a volunteer should change the volunteers dictionary.
-        // Therefore we check whether we can find Uy with 7 hours assigned.
+        // Therefore we check whether we can find Uy, it should return Nil.
         XCTAssertNil(manager.volunteers["Uy"])
     }
     
@@ -44,7 +44,7 @@ class VolunteerManagerTests: XCTestCase {
         manager.volunteer("Tommy", for: 15)
         manager.volunteer("Tommy", for: 10)
         // Successfully adding a volunteer should change the volunteers dictionary.
-        // Therefore we check whether we can find John with 5 hours assigned.
+        // Therefore we check whether we can find Tommy with 20 hours assigned.
         XCTAssertEqual(manager.volunteers["Tommy"], 20)
     }
 }
