@@ -24,7 +24,7 @@ class VolunteerManagerTests: XCTestCase {
     func testLess0Hours(){
         var manager = VolunteerManager()
         manager.volunteer("Uy", for: -5)
-        // Successfully adding a volunteer should change the volunteers dictionary.
+        // Not adding a volunteer to the volunteers dictionary when hours is less than 0
         // Therefore we check whether we can find Uy, it should return Nil.
         XCTAssertNil(manager.volunteers["Uy"])
     }
@@ -34,7 +34,7 @@ class VolunteerManagerTests: XCTestCase {
         var manager = VolunteerManager()
         manager.volunteer("Uy", for: 4)
         manager.volunteer("Uy", for: 3)
-        // Successfully adding a volunteer should change the volunteers dictionary.
+        // Successfully adding hours to the volunteer in the volunteers dictionary.
         // Therefore we check whether we can find Uy with 7 hours assigned.
         XCTAssertEqual(manager.volunteers["Uy"], 7)
     }
@@ -43,7 +43,7 @@ class VolunteerManagerTests: XCTestCase {
         var manager = VolunteerManager()
         manager.volunteer("Tommy", for: 15)
         manager.volunteer("Tommy", for: 10)
-        // Successfully adding a volunteer should change the volunteers dictionary.
+        // Successfully adding 10 hours, but the total is down max 20, hours of the volunteer would be 20 in the volunteers dictionary.
         // Therefore we check whether we can find Tommy with 20 hours assigned.
         XCTAssertEqual(manager.volunteers["Tommy"], 20)
     }
