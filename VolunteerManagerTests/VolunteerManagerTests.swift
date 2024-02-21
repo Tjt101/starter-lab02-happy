@@ -21,6 +21,15 @@ class VolunteerManagerTests: XCTestCase {
     }
     
     // TODO: Create your unit tests below
+    func testLess0Hours(){
+        var manager = VolunteerManager()
+        manager.volunteer("Uy", for: -5)
+        // Successfully adding a volunteer should change the volunteers dictionary.
+        // Therefore we check whether we can find Uy with 7 hours assigned.
+        XCTAssertNil(manager.volunteers["Uy"])
+    }
+    
+    
     func testAddHours(){
         var manager = VolunteerManager()
         manager.volunteer("Uy", for: 4)
