@@ -21,5 +21,21 @@ class VolunteerManagerTests: XCTestCase {
     }
     
     // TODO: Create your unit tests below
- 
+    func testAddHours(){
+        var manager = VolunteerManager()
+        manager.volunteer("Uy", for: 4)
+        manager.volunteer("Uy", for: 3)
+        // Successfully adding a volunteer should change the volunteers dictionary.
+        // Therefore we check whether we can find Uy with 7 hours assigned.
+        XCTAssertEqual(manager.volunteers["Uy"], 7)
+    }
+    
+    func testAddOverHours(){
+        var manager = VolunteerManager()
+        manager.volunteer("Tommy", for: 15)
+        manager.volunteer("Tommy", for: 10)
+        // Successfully adding a volunteer should change the volunteers dictionary.
+        // Therefore we check whether we can find John with 5 hours assigned.
+        XCTAssertEqual(manager.volunteers["Tommy"], 20)
+    }
 }
